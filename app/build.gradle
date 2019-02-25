@@ -26,6 +26,7 @@ def libraries = rootProject.ext.libraries;
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:${libraries.supportVersion}"
     implementation "com.android.support:design:${libraries.supportVersion}"
 
@@ -33,6 +34,9 @@ dependencies {
     implementation "com.google.code.gson:gson:${libraries.gson}"
     implementation "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${libraries.retrofitConvertor}"
+
+    implementation "com.jakewharton.timber:timber:${libraries.timber}"
+    implementation "com.squareup.picasso:picasso:${libraries.picasso}"
 
     //Testing dependencies
     testImplementation "junit:junit:${libraries.junit}"

@@ -1,4 +1,4 @@
-package com.derrick.popularmoviesstage1.network;
+package com.derrick.popularmoviesstage1.Data.network;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Movie implements Parcelable {
     @SerializedName("page")
@@ -20,7 +20,7 @@ public class Movie implements Parcelable {
     private Long totalPages;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private ArrayList<Result> results = null;
     public final static Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
 
         @SuppressWarnings({
@@ -55,7 +55,7 @@ public class Movie implements Parcelable {
      * @param page
      * @param totalPages
      */
-    public Movie(Long page, Long totalResults, Long totalPages, List<Result> results) {
+    public Movie(Long page, Long totalResults, Long totalPages, ArrayList<Result> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
@@ -87,11 +87,11 @@ public class Movie implements Parcelable {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
+    public ArrayList<Result> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(ArrayList<Result> results) {
         this.results = results;
     }
 

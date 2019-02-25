@@ -1,10 +1,12 @@
-package com.derrick.popularmoviesstage1.network;
+package com.derrick.popularmoviesstage1.Data.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.derrick.popularmoviesstage1.utils.Base_urls.BASE_URL;
+
 public class ApiClient {
-    public static final String BASE_URL = "http://api.themoviedb.org/3/";
+
     private static Retrofit retrofit = null;
 
 

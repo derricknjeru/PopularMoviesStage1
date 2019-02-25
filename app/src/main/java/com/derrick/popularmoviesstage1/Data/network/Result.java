@@ -1,4 +1,4 @@
-package com.derrick.popularmoviesstage1.network;
+package com.derrick.popularmoviesstage1.Data.network;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Result implements Parcelable {
-
     @SerializedName("vote_count")
     @Expose
     private Long voteCount;

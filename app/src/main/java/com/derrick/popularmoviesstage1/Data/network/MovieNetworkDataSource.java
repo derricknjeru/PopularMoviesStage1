@@ -1,10 +1,10 @@
-package com.derrick.popularmoviesstage1.network;
+package com.derrick.popularmoviesstage1.Data.network;
 
 import android.content.Context;
 
 import com.derrick.popularmoviesstage1.BuildConfig;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +19,10 @@ public class MovieNetworkDataSource {
     private final Context mContext;
 
     private final OnNetworkResult OnNetworkResult;
+    private String mSorting;
 
     public interface OnNetworkResult {
-        void movies(List<Result> movies);
+        void movies(ArrayList<Result> movies);
 
         void error(Throwable t);
     }
@@ -41,11 +42,11 @@ public class MovieNetworkDataSource {
         return sInstance;
     }
 
-    public void fetchMovies() {
+    public void fetchMovies(String sorting_string) {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<Movie> call = apiService.getPopularMovies(BuildConfig.API_KEY);
+        Call<Movie> call = apiService.getPopularMovies(sorting_string, BuildConfig.API_KEY);
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {

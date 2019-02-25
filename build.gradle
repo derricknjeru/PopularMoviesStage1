@@ -38,6 +38,8 @@ ext {
             junit            : "4.12",
             runner           : "1.0.2",
             espresso_core    : "3.0.2",
+            timber           : "4.7.1",
+            picasso          : "2.71828",
     ]
 
     versionCode = 1
