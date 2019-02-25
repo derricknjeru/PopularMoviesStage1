@@ -1,18 +1,25 @@
 package com.derrick.popularmoviesstage1;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.derrick.popularmoviesstage1.network.MovieNetworkDataSource;
+import com.derrick.popularmoviesstage1.network.Result;
+
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private TextView tvError;
+    private ContentLoadingProgressBar loadingProgressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +28,48 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        initializeViews();
 
-        Log.d(LOG_TAG, "@API_KEY::" + BuildConfig.API_KEY);
+        fetchMovies();
+
+    }
+
+    /**
+     * This fetches movies from TMDB and set it to {@link }
+     */
+    private void fetchMovies() {
+
+        if (BuildConfig.API_KEY.isEmpty() || BuildConfig.API_KEY.contentEquals(getString(R.string.add_key_message))) {
+            tvError.setText(getString(R.string.add_api_key_error_message));
+            return;
+        }
+
+        loadingProgressBar.show();
+
+        MovieNetworkDataSource.getsInstance(this, new MovieNetworkDataSource.OnNetworkResult() {
+            @Override
+            public void movies(List<Result> movies) {
+
+                loadingProgressBar.hide();
+
+                if (movies != null) {
+                    Log.d(LOG_TAG, "@Movies movieList::" + movies.size());
+                }
+            }
+
+            @Override
+            public void error(Throwable t) {
+
+                loadingProgressBar.hide();
+
+                tvError.setText(t.toString());
+            }
+        }).fetchMovies();
+    }
+
+    private void initializeViews() {
+        tvError = findViewById(R.id.error_tv);
+        loadingProgressBar = findViewById(R.id.content_pbar);
     }
 
     @Override
