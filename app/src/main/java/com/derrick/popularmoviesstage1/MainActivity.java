@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Log.d(LOG_TAG, "@API_KEY::" + BuildConfig.API_KEY);
+        //Log.d(LOG_TAG, "@API_KEY::" + BuildConfig.API_KEY);
     }
 
     @Override
