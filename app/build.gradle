@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+    defaultConfig {
+        applicationId configuration.package
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def libraries = rootProject.ext.libraries;
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${libraries.supportVersion}"
+    implementation "com.android.support:design:${libraries.supportVersion}"
+
+    // retrofit, gson
+    implementation "com.google.code.gson:gson:${libraries.gson}"
+    implementation "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libraries.retrofitConvertor}"
+
+    //Testing dependencies
+    testImplementation "junit:junit:${libraries.junit}"
+    androidTestImplementation "com.android.support.test:runner:${libraries.runner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${libraries.espresso_core}"
+}
