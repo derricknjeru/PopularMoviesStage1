@@ -9,5 +9,10 @@
     <string name="pref_sorting_default_value">popular</string>
     <string name="pref_sorting_top_rated">top_rated</string>
     <string name="movie_poster">Poster of the movie</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="detail_error_message">Movie data not available</string>
+    <string name="rating">Rating</string>
+    <string name="release_date">Release date</string>
+    <string name="sample_rating">9.4</string>
 
 </resources>

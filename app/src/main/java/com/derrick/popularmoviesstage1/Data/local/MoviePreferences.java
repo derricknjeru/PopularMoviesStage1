@@ -18,7 +18,7 @@ public class MoviePreferences {
 
     }
 
-    public static void SetSortingQuery(Context context, String SortingQuery) {
+    public static void setSortingQuery(Context context, String sortingQuery) {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
 
@@ -26,7 +26,7 @@ public class MoviePreferences {
 
         String keyForSorting = context.getString(R.string.pref_sorting_key);
 
-        editor.putString(keyForSorting, SortingQuery);
+        editor.putString(keyForSorting, sortingQuery);
 
         editor.commit();
 

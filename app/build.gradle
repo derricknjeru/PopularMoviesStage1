@@ -29,6 +29,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:${libraries.supportVersion}"
     implementation "com.android.support:design:${libraries.supportVersion}"
+    implementation "com.android.support:palette-v7:${libraries.supportVersion}"
 
     // retrofit, gson
     implementation "com.google.code.gson:gson:${libraries.gson}"
@@ -39,6 +40,7 @@ dependencies {
     implementation "com.squareup.picasso:picasso:${libraries.picasso}"
 
     //Testing dependencies
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation "junit:junit:${libraries.junit}"
     androidTestImplementation "com.android.support.test:runner:${libraries.runner}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${libraries.espresso_core}"

@@ -1,12 +1,12 @@
 package com.derrick.popularmoviesstage1.UI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,6 +22,8 @@ import com.derrick.popularmoviesstage1.Data.network.Result;
 import java.util.ArrayList;
 
 import timber.log.Timber;
+
+import static com.derrick.popularmoviesstage1.UI.DetailsActivity.EXTRA_MOVIE_DATA;
 
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -64,6 +66,19 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         }
 
+        adapter.setOnListClickLister(new MovieAdapter.onListClickLister() {
+            @Override
+            public void onClick(int pos) {
+                Result movieData = movieList.get(pos);
+                if (movieData != null) {
+                    Intent i = new Intent(MainActivity.this, DetailsActivity.class);
+                    i.putExtra(EXTRA_MOVIE_DATA, movieData);
+                    startActivity(i);
+                }
+
+            }
+        });
+
 
     }
 
@@ -82,14 +97,14 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         if (movieList != null && movieList.size() > 0) {
             movieList = null;
         }
-        mLoadingProgressBar.show();
+          mLoadingProgressBar.show();
         //Checking if the key is set
         if (BuildConfig.API_KEY.isEmpty() || BuildConfig.API_KEY.contentEquals(getString(R.string.add_key_message))) {
             mTvError.setText(getString(R.string.add_api_key_error_message));
             return;
         }
         //Fetching the movies
-        MovieNetworkDataSource.getsInstance(this, new MovieNetworkDataSource.OnNetworkResult() {
+        MovieNetworkDataSource.getsInstance(new MovieNetworkDataSource.OnNetworkResult() {
             @Override
             public void movies(ArrayList<Result> movies) {
 
@@ -97,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
                 if (movies != null) {
                     movieList = movies;
-                    Timber.d("@Movies movieList::" + movieList);
-                    adapter.setResults(movies);
+                    Timber.d("@Movies fetchMovies movieList::" + movieList);
+                    adapter.setResults(movieList);
                 }
             }
 
@@ -154,13 +169,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_popular) {
             ToggleMenu(item);
-            MoviePreferences.SetSortingQuery(this, getString(R.string.pref_sorting_default_value));
+            MoviePreferences.setSortingQuery(this, getString(R.string.pref_sorting_default_value));
             return true;
         }
 
         if (id == R.id.action_top_rated) {
             ToggleMenu(item);
-            MoviePreferences.SetSortingQuery(this, getString(R.string.pref_sorting_top_rated));
+            MoviePreferences.setSortingQuery(this, getString(R.string.pref_sorting_top_rated));
             return true;
         }
 

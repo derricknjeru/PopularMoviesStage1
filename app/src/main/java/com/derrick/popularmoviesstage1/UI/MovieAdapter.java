@@ -20,6 +20,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     ArrayList<Result> results;
 
+    private onListClickLister onListClickLister;
+
+    public interface onListClickLister {
+        void onClick(int pos);
+    }
+
+    public void setOnListClickLister(MovieAdapter.onListClickLister onListClickLister) {
+        this.onListClickLister = onListClickLister;
+    }
+
+
     public MovieAdapter() {
     }
 
@@ -36,7 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int pos) {
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, final int pos) {
         Result movie = results.get(pos);
 
         String poster = Base_urls.TMDB_IMG_BASE_URL + movie.getPosterPath();
@@ -44,6 +55,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Timber.d("@logs::" + poster);
 
         Picasso.get().load(poster).into(holder.mPosterImg);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onListClickLister.onClick(pos);
+            }
+        });
 
     }
 

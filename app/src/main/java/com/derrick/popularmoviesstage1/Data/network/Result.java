@@ -1,5 +1,6 @@
 package com.derrick.popularmoviesstage1.Data.network;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Parcel;
@@ -9,6 +10,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Result implements Parcelable {
+
     @SerializedName("vote_count")
     @Expose
     private Long voteCount;
@@ -38,7 +40,7 @@ public class Result implements Parcelable {
     private String originalTitle;
     @SerializedName("genre_ids")
     @Expose
-    private List<Long> genreIds = null;
+    private List<Long> genreIds = new ArrayList<>();
     @SerializedName("backdrop_path")
     @Expose
     private String backdropPath;

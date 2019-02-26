@@ -1,7 +1,5 @@
 package com.derrick.popularmoviesstage1.Data.network;
 
-import android.content.Context;
-
 import com.derrick.popularmoviesstage1.BuildConfig;
 
 import java.util.ArrayList;
@@ -16,10 +14,8 @@ public class MovieNetworkDataSource {
     // For Singleton instantiation
     private static final Object LOCK = new Object();
     private static MovieNetworkDataSource sInstance;
-    private final Context mContext;
 
     private final OnNetworkResult OnNetworkResult;
-    private String mSorting;
 
     public interface OnNetworkResult {
         void movies(ArrayList<Result> movies);
@@ -27,16 +23,15 @@ public class MovieNetworkDataSource {
         void error(Throwable t);
     }
 
-    public MovieNetworkDataSource(Context mContext, OnNetworkResult networkResult) {
-        this.mContext = mContext;
+    public MovieNetworkDataSource(OnNetworkResult networkResult) {
         OnNetworkResult = networkResult;
     }
 
 
-    public static MovieNetworkDataSource getsInstance(Context context, OnNetworkResult networkResult) {
+    public static MovieNetworkDataSource getsInstance(OnNetworkResult networkResult) {
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = new MovieNetworkDataSource(context, networkResult);
+                sInstance = new MovieNetworkDataSource(networkResult);
             }
         }
         return sInstance;
