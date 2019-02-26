@@ -14,7 +14,7 @@ First off, you require the latest [Android Studio 3.0 (or newer)](https://develo
 Clone the Repository
 
 ### Setting themoviedb.org API key
-You need to supply Api key for [TMDB](https://www.themoviedb.org/?_dc=1551209331). 
+You need to supply Api key of [TMDB](https://www.themoviedb.org/?_dc=1551209331). 
 
 When you obtain the key, Provide it to the app by putting the following in the
 `gradle.properties` file in your user home:
@@ -31,7 +31,7 @@ Using git
 ## License
 
 ```
-Copyright 2018 Derrick Njeru
+Copyright 2019 Derrick Njeru
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements. See the NOTICE file distributed with this work for
