@@ -13,7 +13,7 @@ First off, you require the latest [Android Studio 3.0 (or newer)](https://develo
 ### Installing
 Clone the Repository
 
-### Setting themoviedb.org API key
+### Setting TMDB API key
 You need to supply Api key of [TMDB](https://www.themoviedb.org/?_dc=1551209331). 
 
 When you obtain the key, Provide it to the app by putting the following in the
