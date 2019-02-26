@@ -24,7 +24,7 @@ When you obtain the key, Provide it to the app by putting the following in the
 TMDB_API_KEY="copy paste key here"
 
 ```
-## Versioning
+### Versioning
 
 Using git
 
