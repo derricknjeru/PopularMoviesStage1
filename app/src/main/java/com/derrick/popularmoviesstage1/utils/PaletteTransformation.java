@@ -1,9 +1,7 @@
 package com.derrick.popularmoviesstage1.utils;
 
 import android.graphics.Bitmap;
-import android.support.v4.util.Pools;
 import android.support.v7.graphics.Palette;
-
 
 import com.squareup.picasso.Transformation;
 

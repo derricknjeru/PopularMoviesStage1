@@ -6,8 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
@@ -145,7 +143,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Bitmap bitmap = ((BitmapDrawable) mBackDropImg.getDrawable()).getBitmap();
 
-        /**
+        /*
          * Pelette from {@link PaletteTransformation class}
          */
         Palette palette = PaletteTransformation.getPalette(bitmap);
@@ -177,7 +175,7 @@ public class DetailsActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(statusColor);
         }
-        /**
+        /*
          * setting toolbar ScrimColor
          */
         mCollapsingToolbarLayout.setContentScrimColor(backgroundColor);

@@ -22,7 +22,7 @@ android {
     }
 }
 
-def libraries = rootProject.ext.libraries;
+def libraries = rootProject.ext.libraries
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

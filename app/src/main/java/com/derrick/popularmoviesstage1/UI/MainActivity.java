@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private RecyclerView mRecycleView;
 
     private final String SAVED_MOVIES_LIST = "saved_movies";
-    ArrayList<Result> movieList;
+    private ArrayList<Result> movieList;
     private MovieAdapter adapter;
     private String query;
-    private int numberOfColumns = 2;
+    private final int numberOfColumns = 2;
 
 
     @Override
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         } else {
             mLoadingProgressBar.hide();
             movieList = savedInstanceState.getParcelableArrayList(SAVED_MOVIES_LIST);
-            Timber.d("@Movies movieList onSavedInstance::" + movieList.size());
             adapter.setResults(movieList);
 
         }
@@ -97,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         if (movieList != null && movieList.size() > 0) {
             movieList = null;
         }
-          mLoadingProgressBar.show();
+        mLoadingProgressBar.show();
         //Checking if the key is set
-        if (BuildConfig.API_KEY.isEmpty() || BuildConfig.API_KEY.contentEquals(getString(R.string.add_key_message))) {
+        if (BuildConfig.API_KEY.contentEquals(getString(R.string.add_key_message))) {
             mTvError.setText(getString(R.string.add_api_key_error_message));
             return;
         }

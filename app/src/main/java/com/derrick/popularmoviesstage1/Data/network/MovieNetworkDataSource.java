@@ -23,7 +23,7 @@ public class MovieNetworkDataSource {
         void error(Throwable t);
     }
 
-    public MovieNetworkDataSource(OnNetworkResult networkResult) {
+    private MovieNetworkDataSource(OnNetworkResult networkResult) {
         OnNetworkResult = networkResult;
     }
 

@@ -18,7 +18,7 @@ import timber.log.Timber;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    ArrayList<Result> results;
+    private ArrayList<Result> results;
 
     private onListClickLister onListClickLister;
 
@@ -71,7 +71,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public class MovieViewHolder extends RecyclerView.ViewHolder {
-        ImageView mPosterImg;
+        final ImageView mPosterImg;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
