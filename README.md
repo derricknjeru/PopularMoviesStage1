@@ -20,8 +20,8 @@ When you obtain the key, Provide it to the app by putting the following in the
 `gradle.properties` file in your user home:
 
 ```
-# Get this from TMDb
-TIVI_TMDB_API_KEY=<insert>
+# replace 'copy paste key here'
+TMDB_API_KEY="copy paste key here"
 
 ```
 ## Versioning
